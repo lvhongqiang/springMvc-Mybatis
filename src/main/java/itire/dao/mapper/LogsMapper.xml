@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="itire.dao.mapper.LogsMapper">
+  <resultMap id="BaseResultMap" type="itire.model.po.Logs">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="fid" jdbcType="INTEGER" property="fid" />
+    <result column="nid" jdbcType="INTEGER" property="nid" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="addr" jdbcType="VARCHAR" property="addr" />
+    <result column="agent" jdbcType="VARCHAR" property="agent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, fid, nid, insert_time, addr, agent
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from logs
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from logs
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="itire.model.po.Logs">
+    insert into logs (id, fid, nid, 
+      insert_time, addr, agent
+      )
+    values (#{id,jdbcType=INTEGER}, #{fid,jdbcType=INTEGER}, #{nid,jdbcType=INTEGER}, 
+      #{insertTime,jdbcType=TIMESTAMP}, #{addr,jdbcType=VARCHAR}, #{agent,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="itire.model.po.Logs">
+    insert into logs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="fid != null">
+        fid,
+      </if>
+      <if test="nid != null">
+        nid,
+      </if>
+      <if test="insertTime != null">
+        insert_time,
+      </if>
+      <if test="addr != null">
+        addr,
+      </if>
+      <if test="agent != null">
+        agent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null">
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="nid != null">
+        #{nid,jdbcType=INTEGER},
+      </if>
+      <if test="insertTime != null">
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addr != null">
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="agent != null">
+        #{agent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="itire.model.po.Logs">
+    update logs
+    <set>
+      <if test="fid != null">
+        fid = #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="nid != null">
+        nid = #{nid,jdbcType=INTEGER},
+      </if>
+      <if test="insertTime != null">
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addr != null">
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="agent != null">
+        agent = #{agent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="itire.model.po.Logs">
+    update logs
+    set fid = #{fid,jdbcType=INTEGER},
+      nid = #{nid,jdbcType=INTEGER},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      addr = #{addr,jdbcType=VARCHAR},
+      agent = #{agent,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
