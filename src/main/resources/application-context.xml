@@ -12,7 +12,7 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="itire.dao"/>
+    <context:component-scan base-package="itire.dao.mapper"/>
     <context:component-scan base-package="itire.service"/>
 
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
@@ -67,6 +67,10 @@
         <property name="dataSource" ref="dataSource" />
         <!-- 自动扫描mapping.xml文件 -->
         <property name="mapperLocations" value="classpath:itire/dao/mapper/*.xml"></property>
+    </bean>
+    <!-- 自动扫描所有的Mapper接口与文件 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="itire.dao.mapper"></property>
     </bean>
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
     <bean id="transactionManager"

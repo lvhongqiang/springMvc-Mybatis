@@ -4,14 +4,18 @@
 
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
   <display-name>itire</display-name>
-  <!-- 不拦截静态文件 -->
+  <!-- 不拦截静态文件
   <servlet-mapping>
         <servlet-name>default</servlet-name>
+        <url-pattern>/index.html</url-pattern>
+        <url-pattern>/app/*</url-pattern>
+        <url-pattern>/node_modules/*</url-pattern>
+        <url-pattern>*.js</url-pattern>
         <url-pattern>/js/*</url-pattern>
         <url-pattern>/css/*</url-pattern>
         <url-pattern>/images/*</url-pattern>
         <url-pattern>/fonts/*</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
     <!-- 配置字符集 -->
     <filter>
         <filter-name>encodingFilter</filter-name>
@@ -42,7 +46,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>springMvc</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 
     <context-param>
@@ -55,4 +59,10 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+    </welcome-file-list>
 </web-app>

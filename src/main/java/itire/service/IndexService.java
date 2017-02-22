@@ -1,6 +1,9 @@
 package itire.service;
 
+import itire.dao.mapper.LogsMapper;
+import itire.model.po.Logs;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
@@ -10,8 +13,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class IndexService {
     private static final Logger logger = Logger.getLogger(IndexService.class);
+    @Autowired
+    private LogsMapper logsMapper;
     
-    public void logs(){
+    public Logs logs(Integer id){
         logger.info("execute IndexService.logs()");
+        return logsMapper.selectByPrimaryKey(id);
     }
 }

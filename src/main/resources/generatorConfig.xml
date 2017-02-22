@@ -40,7 +40,7 @@
         </javaClientGenerator>
 
         <!-- !!!! Table Configurations !!!! -->
-        <table tableName="logs" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+        <table tableName="search_keywrod_logs" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false"/>
     </context>
 </generatorConfiguration>
